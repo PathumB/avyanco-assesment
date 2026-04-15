@@ -65,20 +65,17 @@
     var items = document.querySelectorAll('.accordion__item');
     items.forEach(function (item) {
         var trigger = item.querySelector('.accordion__trigger');
-        var panel = item.querySelector('.accordion__panel');
         var chevron = item.querySelector('.accordion__chevron');
 
         trigger.addEventListener('click', function () {
             var isOpen = item.classList.contains('accordion__item--open');
 
-            items.forEach(function (i) {
-                i.classList.remove('accordion__item--open');
-                i.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
-                var ch = i.querySelector('.accordion__chevron');
-                ch.innerHTML = '<polyline points="6 9 12 15 18 9"/>';
-            });
-
-            if (!isOpen) {
+            // Simply toggle the current item
+            if (isOpen) {
+                item.classList.remove('accordion__item--open');
+                trigger.setAttribute('aria-expanded', 'false');
+                chevron.innerHTML = '<polyline points="6 9 12 15 18 9"/>';
+            } else {
                 item.classList.add('accordion__item--open');
                 trigger.setAttribute('aria-expanded', 'true');
                 chevron.innerHTML = '<polyline points="18 15 12 9 6 15"/>';

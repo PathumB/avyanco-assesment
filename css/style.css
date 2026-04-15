@@ -556,12 +556,19 @@ a {
 
 /* Panel body */
 .accordion__panel {
-    display: none;
-    padding: 0 var(--sp-24) var(--sp-24);
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+    padding: 0 var(--sp-24);
 }
 
 .accordion__item--open .accordion__panel {
-    display: block;
+    grid-template-rows: 1fr;
+}
+
+.accordion__panel-inner {
+    overflow: hidden;
+    min-height: 0;
 }
 
 .accordion__description {
@@ -774,6 +781,10 @@ a {
     justify-content: center;
     flex-shrink: 0;
     color: var(--color-primary);
+}
+
+.sp-b-24 {
+    margin-bottom: var(--sp-24);
 }
 
 .doc-card__title {
