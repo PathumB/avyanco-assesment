@@ -71,16 +71,13 @@
         trigger.addEventListener('click', function () {
             var isOpen = item.classList.contains('accordion__item--open');
 
-            // Close all
             items.forEach(function (i) {
                 i.classList.remove('accordion__item--open');
                 i.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
-                // Reset non-open chevrons
                 var ch = i.querySelector('.accordion__chevron');
                 ch.innerHTML = '<polyline points="6 9 12 15 18 9"/>';
             });
 
-            // Open clicked (if it was closed)
             if (!isOpen) {
                 item.classList.add('accordion__item--open');
                 trigger.setAttribute('aria-expanded', 'true');
@@ -88,5 +85,21 @@
             }
         });
     });
+
+    /*  Reveal on scroll  */
+    if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(function (el) {
+            revealObserver.observe(el);
+        });
+    }
 
 })();

@@ -2,6 +2,7 @@
     --color-primary: #2B39C8;
     --color-primary-dark: #1E2A9A;
     --color-primary-tint: #EEF0F7;
+    --color-primary-tint-dark: #DFE4F4;
     --color-primary-accent: #4A52A8;
     --color-amber: #F5A623;
     --color-amber-dark: #e09416;
@@ -278,7 +279,7 @@ a {
 
 .hero__badge {
     display: inline-block;
-    background: var(--color-primary-tint);
+    background: var(--color-primary-tint-dark);
     color: var(--color-primary-accent);
     border-radius: var(--radius-pill);
     padding: 5px 14px;
@@ -1431,7 +1432,7 @@ a {
 .cta-banner__sub {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.82);
-    max-width: 520px;
+    max-width: 680px;
     margin-inline: auto;
     line-height: 1.6;
     margin-bottom: var(--sp-40);
@@ -1614,6 +1615,10 @@ a {
     .inc-timeline__list {
         padding-left: var(--sp-24);
     }
+
+    .timeline-item::before {
+        left: -16px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1667,4 +1672,18 @@ a {
         width: 100%;
         justify-content: center;
     }
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.8s cubic-bezier(0.21, 0.45, 0.32, 0.9),
+        transform 0.8s cubic-bezier(0.21, 0.45, 0.32, 0.9);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
