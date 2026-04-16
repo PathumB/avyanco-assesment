@@ -88,7 +88,11 @@
         var revealObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
                 if (e.isIntersecting) {
+                    e.target.style.willChange = 'opacity, transform';
                     e.target.classList.add('is-visible');
+                    setTimeout(function() {
+                        e.target.style.willChange = '';
+                    }, 1000);
                     revealObserver.unobserve(e.target);
                 }
             });

@@ -1710,7 +1710,6 @@ a {
     transition:
         opacity 0.8s cubic-bezier(0.21, 0.45, 0.32, 0.9),
         transform 0.8s cubic-bezier(0.21, 0.45, 0.32, 0.9);
-    will-change: opacity, transform;
 }
 
 .reveal-on-scroll.is-visible {

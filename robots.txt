@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: [Need_to_add_domain]/sitemap.xml
+Sitemap: [we_need_to_add_domain]/sitemap.xml
